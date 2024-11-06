@@ -1,38 +1,37 @@
-### Problem Statement: K-Arm Bandit-Based Recommendation System
+Problem Statement: K-Arm Bandit-Based Recommendation System
 
 Design a recommendation system using the K-Arm bandit framework. This system should recommend one item to a user at each interaction, gradually learning user preferences to improve recommendation quality. The key objective is to balance *exploration* (trying out different items to learn user preferences) and *exploitation* (recommending items that have previously performed well) to maximize cumulative rewards. 
 
-### Solution Approach: Epsilon-Greedy Method
+Solution Approach: Epsilon-Greedy Method
 
 The epsilon-greedy method is a widely used approach to manage the exploration-exploitation trade-off in K-Arm bandit problems. In this recommendation system:
 
-- **Items (Arms):** Each "arm" represents a recommendation—such as a movie, product, magazine, or song. The system chooses from these items based on user interactions.
-- **Rewards:** User interactions serve as feedback. For example:
-  - **Click-through rate (CTR):** Rewarded if a user clicks on an item.
-  - **Engagement time:** Rewarded based on time spent with an item.
-  - **Purchases or downloads:** Rewarded if a user buys or downloads the item.
+- Items (Arms): Each "arm" represents a recommendation—such as a movie, product, magazine, or song. The system chooses from these items based on user interactions.
+- Rewards: User interactions serve as feedback. For example:
+- Click-through rate (CTR): Rewarded if a user clicks on an item.
+- Engagement time: Rewarded based on time spent with an item.
+- Purchases or downloads: Rewarded if a user buys or downloads the item.
 
 The system’s goal is to maximize these rewards by identifying the items with the highest recommendation potential.
 
-### Exploration-Exploitation Balance
+Exploration-Exploitation Balance
 
 The K-Arm bandit problem emphasizes balancing:
-- **Exploitation:** Recommending items with high observed success rates to maximize immediate rewards.
-- **Exploration:** Occasionally recommending lesser-known items to gain new insights into user preferences.
+- Exploitation: Recommending items with high observed success rates to maximize immediate rewards.
+- Exploration: Occasionally recommending lesser-known items to gain new insights into user preferences.
 
-Using the **epsilon-greedy algorithm**, the system explores with probability **ε**, selecting an item at random to gather information about lesser-known items. It exploits with probability **1-ε**, recommending items with the highest estimated reward rates. Typically, ε starts high (more exploration) and gradually decays as the system gathers more knowledge, focusing more on exploitation over time.
+Using the epsilon-greedy algorithm, the system explores with probability ε, selecting an item at random to gather information about lesser-known items. It exploits with probability 1-ε, recommending items with the highest estimated reward rates. Typically, ε starts high (more exploration) and gradually decays as the system gathers more knowledge, focusing more on exploitation over time.
 
-### Implementation Steps
+Implementation Steps
 
-1. **Initialization:** Assign initial reward estimates to each arm.
-2. **Recommendation Selection:** Use the epsilon-greedy method to decide which item to recommend.
-3. **Feedback Collection:** Record whether the user interacted positively with the recommendation (reward).
-4. **Update Estimates:** Update the estimated reward for the selected item based on the user’s feedback.
-5. **Repeat:** Continue this process for each new user interaction to refine recommendations over time.
+1. Initialization: Assign initial reward estimates to each arm.
+2. Recommendation Selection: Use the epsilon-greedy method to decide which item to recommend.
+3. Feedback Collection: Record whether the user interacted positively with the recommendation (reward).
+4. Update Estimates: Update the estimated reward for the selected item based on the user’s feedback.
+5. Repeat: Continue this process for each new user interaction to refine recommendations over time.
 
-### Benefits of Epsilon-Greedy for Recommendations
+Benefits of Epsilon-Greedy for Recommendations
 
-- **Effective Balance of Exploration and Exploitation:** The epsilon-greedy method adapts dynamically, exploring initially and gradually focusing on high-reward items as it learns.
-- **Adaptability to Changing Preferences:** The system continuously learns and adjusts, making it suitable for evolving user behaviors.
-- **Scalability for Large Item Sets:** Focuses on the most promising items, making it efficient for recommendations within extensive catalogs.
-
+- Effective Balance of Exploration and Exploitation: The epsilon-greedy method adapts dynamically, exploring initially and gradually focusing on high-reward items as it learns.
+- Adaptability to Changing Preferences: The system continuously learns and adjusts, making it suitable for evolving user behaviors.
+- Scalability for Large Item Sets: Focuses on the most promising items, making it efficient for recommendations within extensive catalogs.
